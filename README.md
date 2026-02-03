@@ -21,6 +21,17 @@ A clean, aesthetic, and fully customizable Pomodoro timer designed to keep you i
 * **UI Scaling:** Adjust interface size (Small, Medium, Large) to fit any screen.
 * **Auto-Save:** Your settings, stats, and tasks are remembered automatically.
 
+### ⏳ Timer Constraints
+To ensure an effective workflow and maintain UI stability, the following limits are enforced:
+
+| Timer Type | Minimum | Maximum |
+| :--- | :--- | :--- |
+| **Work Session** | 10 minutes | 120 minutes |
+| **Short Break** | 5 minutes | 20 minutes |
+| **Long Break** | 30 minutes | 60 minutes |
+
+> **Note:** If an entered value exceeds these ranges, the app will automatically snap to the nearest valid limit.
+
 ### 📥 Installation
 1. Download `Pomodoro.exe` via the button above.
 2. Run the file. No installation required.
