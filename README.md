@@ -2,7 +2,7 @@
 
 **Developed by Kristiyan Staykov**
 
-[![Download](https://img.shields.io/badge/Download-Pomodoro.exe-blue?style=for-the-badge&logo=windows)](https://github.com/Vermillion-D/Pomodoro-Focus-Timer/releases/tag/1.0.0)
+[![Download](https://img.shields.io/badge/Download-Pomodoro.exe-blue?style=for-the-badge&logo=windows)](https://github.com/kris-staykov/Pomodoro-Focus-Timer/releases/tag/1.0.0)
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 [![Python](https://img.shields.io/badge/Python-3-yellow?style=for-the-badge&logo=python)](https://www.python.org/)
 [![Kivy](https://img.shields.io/badge/Built%20with-Kivy-lightgrey?style=for-the-badge)](https://kivy.org/)
