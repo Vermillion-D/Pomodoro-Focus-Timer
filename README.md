@@ -50,7 +50,7 @@ To ensure an effective workflow and maintain UI stability, the following limits 
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/Vermillion-D/Pomodoro-Focus-Timer.git
+   git clone https://github.com/kris-staykov/Pomodoro-Focus-Timer.git
    cd Pomodoro-Focus-Timer
    ```
 2. Install the dependencies:
