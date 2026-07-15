@@ -1,6 +1,6 @@
 # 🍅 Pomodoro Focus Timer
 
-**Developed by Kristiyan Staykov (Maliss Dev)**
+**Developed by Kristiyan Staykov**
 
 [![Download](https://img.shields.io/badge/Download-Pomodoro.exe-blue?style=for-the-badge&logo=windows)](https://github.com/Vermillion-D/Pomodoro-Focus-Timer/releases/tag/1.0.0)
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
@@ -70,4 +70,4 @@ To ensure an effective workflow and maintain UI stability, the following limits 
 
 ---
 
-© 2026 Kristiyan Staykov (Maliss Dev) — released under the [MIT License](LICENSE).
+© 2026 Kristiyan Staykov — released under the [MIT License](LICENSE).
