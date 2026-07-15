@@ -44,7 +44,6 @@ To ensure an effective workflow and maintain UI stability, the following limits 
 
 * **Python 3**
 * **[Kivy](https://kivy.org/)** — cross-platform UI framework
-* **[Plyer](https://github.com/kivy/plyer)** — native notifications on mobile
 * **[Pillow](https://python-pillow.org/)** — image brightness analysis for adaptive timer contrast
 
 ### 🐍 Run from Source
