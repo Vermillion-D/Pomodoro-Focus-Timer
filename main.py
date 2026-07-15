@@ -32,14 +32,9 @@ from kivy.uix.colorpicker import ColorPicker
 from kivy.uix.filechooser import FileChooserIconView
 from kivy.uix.togglebutton import ToggleButton
 from kivy.properties import StringProperty, BooleanProperty, NumericProperty, ListProperty, ObjectProperty
-from kivy.utils import get_color_from_hex, get_hex_from_color, platform
+from kivy.utils import get_color_from_hex, get_hex_from_color
 
 # --- OPTIONAL DEPENDENCIES ---
-try:
-    from plyer import notification
-except ImportError:
-    notification = None
-
 try:
     from PIL import Image as PILImage, ImageStat
 except ImportError:
@@ -80,11 +75,8 @@ def get_luminance(color_list):
 
 # --- FILE PATH MANAGEMENT ---
 def get_user_data_dir():
-    """Return a writable directory for persistent app data on each platform."""
-    if platform == 'android' or platform == 'ios':
-        return App.get_running_app().user_data_dir
-    else:
-        return os.path.dirname(os.path.abspath(__file__))
+    """Return the directory for persistent app data (next to the script)."""
+    return os.path.dirname(os.path.abspath(__file__))
 
 # --- KV DESIGN ---
 KV = """
@@ -743,16 +735,10 @@ class GalleryItem(ButtonBehavior, BoxLayout):
             self.thumbnail_source = self.full_path
 
     def on_touch_down(self, touch):
-        if self.collide_point(*touch.pos):
-            if platform not in ('android', 'ios'):
-                if touch.is_double_tap:
-                    self.callback(self.full_path, self.is_folder)
-                    return True
-        return super().on_touch_down(touch)
-
-    def on_release(self):
-        if platform in ('android', 'ios'):
+        if self.collide_point(*touch.pos) and touch.is_double_tap:
             self.callback(self.full_path, self.is_folder)
+            return True
+        return super().on_touch_down(touch)
 
 class PomodoroLayout(FloatLayout):
     """Root widget: timer logic, settings persistence, theming, tasks and gallery popups."""
@@ -1112,34 +1098,16 @@ class PomodoroLayout(FloatLayout):
         self.pause_label = "Pause"
 
     def trigger_notification_and_sound(self):
-        """Notify the user that a phase finished, using the platform's best option."""
-        is_mobile = platform in ('android', 'ios')
-        sound_on = self.settings.get('sound_enabled', True)
-        notify_on = self.settings.get('popup_enabled', True)
+        """Notify the user that a phase finished: play a sound and bring the window forward."""
+        if self.settings.get('sound_enabled', True):
+            self.play_sound_file()
 
-        if is_mobile:
-            if notify_on:
-                if notification:
-                    try:
-                        notification.notify(
-                            title="Pomodoro",
-                            message=self.title_text + " time!",
-                            timeout=10
-                        )
-                    except Exception as e:
-                        print(f"Notification failed: {e}")
-            elif sound_on:
-                self.play_sound_file()
-        else:
-            if sound_on:
-                self.play_sound_file()
-            
-            if notify_on:
-                try:
-                    Window.restore()
-                    Window.raise_window()
-                except Exception:
-                    pass
+        if self.settings.get('popup_enabled', True):
+            try:
+                Window.restore()
+                Window.raise_window()
+            except Exception:
+                pass
 
     def play_sound_file(self):
         if os.path.exists(self.files["sound"]):
